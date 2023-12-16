@@ -1,3 +1,12 @@
+
+
+// All code is below the top which was used as reference for creation
+
+
+
+
+
+
 //console.log("Prac 2");
 //let myName=prompt("Enter your name:");
 //console.log(myName);
@@ -25,7 +34,43 @@ function sub(){
 // Homework 2 starts here
 
 
+/*
+function ctf() {
+    let temperature = prompt("What's the Temp in C?");
+    let fahrenheit = parseInt(temperature) * 9/5 + 32;
+    console.log(fahrenheit);
+}
 
-function ftc(){
-    let temp1=prompt(Fare)
+function ftc() {
+    let temperature2 = prompt("What's the Temp in F?");
+    let celsius = (parseInt(temperature2) - 32) * 5/9;
+    console.log(celsius);
+}
+*/
+// event is used as good practice to let person know it is to stop event from happening premature
+function convertTemperature(event) {
+    event.preventDefault();
+
+    let temperature = document.getElementById("temperature").value;
+    let unit = document.getElementById("unit").value;
+
+    if (unit === "celsius") {
+        let fahrenheit = (parseFloat(temperature) * 9/5) + 32;
+        document.getElementById("solution").innerText= `${fahrenheit} Fahrenheit.`;
+
+        if (parseInt(fahrenheit) < 59.99999999) {
+            document.body.style.backgroundImage = 'url("./snow.jpeg")'; 
+        } else {
+            document.body.style.backgroundImage = 'url("./spring.jpeg")';
+        }
+    } else {
+        let celsius = (parseFloat(temperature) - 32) * 5/9;
+        document.getElementById("solution").innerText = `${celsius} Celsius.`;
+
+        if (parseInt(celsius) < 15.5999) {
+            document.body.style.backgroundImage = 'url("./snow.jpeg")';
+        } else {
+            document.body.style.backgroundImage = 'url("./spring.jpeg")';
+        }
+    }
 }

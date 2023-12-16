@@ -1,0 +1,18 @@
+* {
+background-repeat: no-repeat !important;
+background-size: cover;
+
+}
+body{
+    background-image: url("./background.png");
+    background-size: 140%;
+}
+.container{
+    display: flex;
+    margin-bottom: 50px;
+}
+.container img{
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
