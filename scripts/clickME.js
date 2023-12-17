@@ -1,6 +1,6 @@
 
 
-// All code is below the top which was used as reference for creation
+// All code is below the comments which were used as reference for creation
 
 
 
@@ -58,7 +58,7 @@ function convertTemperature(event) {
         let fahrenheit = (parseFloat(temperature) * 9/5) + 32;
         document.getElementById("solution").innerText= `${fahrenheit} Fahrenheit.`;
 
-        if (parseInt(fahrenheit) < 59.99999999) {
+        if (parseInt(fahrenheit) <= 59.99999999) {
             document.body.style.backgroundImage = 'url("./snow.jpeg")'; 
         } else {
             document.body.style.backgroundImage = 'url("./spring.jpeg")';
