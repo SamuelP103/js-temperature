@@ -8,13 +8,14 @@ body {
     
 }
 .form-container{
-    background-color: gray;
+    background-color: rgba(59, 109, 179, 0.87);
     height: 300px;
     width: 600px;
-    border: 1px solid black;
-    margin-left: 15%;
-    margin-right: 15%;
+    border: 2px solid rgba(89, 154, 5, 0.912);
+    margin-left: 10%;
+    margin-right: 10%;
     border-radius: 10%;
+    margin-top: 6%;
 }
 * {
     background-repeat: no-repeat !important;
@@ -25,10 +26,14 @@ body {
         background-image: url("../background.png");
         height: 1000px;
         width: 130%;
-        background-position: -295px 0px; 
+        background-position: -160px 0px; 
         /* x and Y axis */
-
-
+}
+@media(min-width:1260px){
+.background-container{
+        background-image: url("../background.png");
+        background-position: -335px 0px; 
+}
 }
 .container{
         display: flex;
@@ -39,8 +44,69 @@ body {
         margin-left: 20px;
         margin-top: 20px;
 }
-
-
+.solution-container{
+    background-color: rgb(232, 232, 232);
+    height: 50px;
+    width: 60%;
+    margin: auto;
+    margin-top: 10%;
+}
+.input-container{
+    margin: auto;
+    margin-top: 5%;
+}
+form button{
+    height: 40px;
+    width: 120px;
+    border: 1px solid rgb(148, 148, 148);
+    background-color: rgb(36, 36, 36);
+    color: rgb(222, 222, 222);
+    margin-top: 50px;
+}
+form input,
+form select{
+    background-color: rgb(232, 232, 232);
+    height: 25px;
+    border: none;
+}
+h1{
+    font-size: 50px;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    color: rgba(156, 207, 255, 0.911);
+    border: 1px solid rgb(185, 222, 255);
+    background-color: rgba(116, 177, 19, 0.83);
+    margin-top: 20px;
+}
+.flex-box{
+    display: flex;
+    flex-direction: row;
+}
+.th-container {
+    height: 300px;
+    width: 35px;
+    background-color: rgba(255, 255, 255, 0.621);
+    margin: auto;
+    margin-top: 73px;
+    padding-top: 0px;
+    padding-bottom: 82px;
+    border-radius: 20%;
+}
+.th2, .th3, .th4,
+.th5, .th6{
+    height: 25%;
+    border: 1px solid black;
+}
+.th2{
+    border-bottom-left-radius: 35%;
+    border-bottom-right-radius: 35%;
+}
+.th6{
+    border-top-left-radius: 24%;
+    border-top-right-radius: 24%;
+    
+}
 
 
 
@@ -83,3 +149,4 @@ body {
     margin: 20px;
     margin-left: 10%;
 }
+

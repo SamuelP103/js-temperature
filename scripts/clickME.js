@@ -50,9 +50,14 @@ function ftc() {
 // event is used as good practice to let person know it is to stop event from happening premature
 function convertTemperature(event) {
     event.preventDefault();
-
     let temperature = document.getElementById("temperature").value;
     let unit = document.getElementById("unit").value;
+    // this is part 1 to select elements in doc 
+    let th2Element=document.querySelector('.th2');
+    let th3Element=document.querySelector('.th3');
+    let th4Element=document.querySelector('.th4');
+    let th5Element=document.querySelector('.th5');
+    let th6Element=document.querySelector('.th6');
 
     if (unit === "celsius") {
         let fahrenheit = (parseFloat(temperature) * 9/5) + 32;
@@ -63,6 +68,39 @@ function convertTemperature(event) {
         } else {
             document.body.style.backgroundImage = 'url("./spring.jpeg")';
         }
+        if (parseInt(fahrenheit) >= 105) {
+            th6Element.style.backgroundImage = 'url("./fire.png")';
+            th5Element.style.backgroundImage = 'url("./fire.png")';
+            th4Element.style.backgroundImage = 'url("./fire.png")';
+            th3Element.style.backgroundImage = 'url("./fire.png")';
+            th2Element.style.backgroundImage = 'url("./fire.png")';
+        } else {
+            th6Element.style.backgroundImage = '';
+            th5Element.style.backgroundImage = '';
+            th4Element.style.backgroundImage = '';
+            th3Element.style.backgroundImage = '';
+            th2Element.style.backgroundImage = '';
+        }
+        if (parseInt(fahrenheit) <= 70) {
+            th5Element.style.backgroundColor = '';
+        } else {
+            th5Element.style.backgroundColor = 'red';
+        }
+        if (parseInt(fahrenheit) <= 35) {
+            th4Element.style.backgroundColor = '';
+        } else {
+            th4Element.style.backgroundColor = 'red';
+        }
+        if (parseInt(fahrenheit) <= 0) {
+            th3Element.style.backgroundColor = '';
+        } else {
+            th3Element.style.backgroundColor = 'red';
+        }
+        if (parseInt(fahrenheit) >= 0) {
+            th2Element.style.backgroundColor = 'red';
+        } else {
+            th2Element.style.backgroundImage = 'url("./ice.png")';
+        }
     } else {
         let celsius = (parseFloat(temperature) - 32) * 5/9;
         document.getElementById("solution").innerText = `${celsius} Celsius.`;
@@ -71,6 +109,40 @@ function convertTemperature(event) {
             document.body.style.backgroundImage = 'url("./snow.jpeg")';
         } else {
             document.body.style.backgroundImage = 'url("./spring.jpeg")';
+        }
+        //part 2 to select elements in doc
+        if (parseInt(celsius) >= 30.0999) {
+            th6Element.style.backgroundImage = 'url("./fire.png")';
+            th5Element.style.backgroundImage = 'url("./fire.png")';
+            th4Element.style.backgroundImage = 'url("./fire.png")';
+            th3Element.style.backgroundImage = 'url("./fire.png")';
+            th2Element.style.backgroundImage = 'url("./fire.png")';
+        } else {
+            th6Element.style.backgroundImage = '';
+            th5Element.style.backgroundImage = '';
+            th4Element.style.backgroundImage = '';
+            th3Element.style.backgroundImage = '';
+            th2Element.style.backgroundImage = '';
+        }
+        if (parseInt(celsius) <= 15.0999) {
+            th5Element.style.backgroundColor = '';
+        } else {
+            th5Element.style.backgroundColor = 'red';
+        }
+        if (parseInt(celsius) <= 0) {
+            th4Element.style.backgroundColor = '';
+        } else {
+            th4Element.style.backgroundColor = 'red';
+        }
+        if (parseInt(celsius) <= -15) {
+            th3Element.style.backgroundColor = '';
+        } else {
+            th3Element.style.backgroundColor = 'red';
+        }
+        if (parseInt(celsius) >= -15) {
+            th2Element.style.backgroundColor = 'red';
+        } else {
+            th2Element.style.backgroundImage = 'url("./ice.png")';
         }
     }
 }
