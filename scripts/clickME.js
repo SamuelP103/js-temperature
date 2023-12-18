@@ -58,15 +58,21 @@ function convertTemperature(event) {
     let th4Element=document.querySelector('.th4');
     let th5Element=document.querySelector('.th5');
     let th6Element=document.querySelector('.th6');
+    let backgroundContainer=document.querySelector('.background-container');
+    
+
 
     if (unit === "celsius") {
         let fahrenheit = (parseFloat(temperature) * 9/5) + 32;
         document.getElementById("solution").innerText= `${fahrenheit} Fahrenheit.`;
 
-        if (parseInt(fahrenheit) <= 59.99999999) {
-            document.body.style.backgroundImage = 'url("./snow.jpeg")'; 
-        } else {
-            document.body.style.backgroundImage = 'url("./spring.jpeg")';
+        if (parseInt(fahrenheit) >= 60) {
+            backgroundContainer.style.backgroundImage = 'url("./spring.png")'; 
+        }else if(parseInt(fahrenheit) >= 15){
+            backgroundContainer.style.backgroundImage = 'url("./aut.png")';
+        }
+        else {
+            backgroundContainer.style.backgroundImage = 'url("./snow.jpeg")';
         }
         if (parseInt(fahrenheit) >= 105) {
             th6Element.style.backgroundImage = 'url("./fire.png")';
@@ -105,10 +111,13 @@ function convertTemperature(event) {
         let celsius = (parseFloat(temperature) - 32) * 5/9;
         document.getElementById("solution").innerText = `${celsius} Celsius.`;
 
-        if (parseInt(celsius) < 15.5999) {
-            document.body.style.backgroundImage = 'url("./snow.jpeg")';
-        } else {
-            document.body.style.backgroundImage = 'url("./spring.jpeg")';
+        if (parseInt(celsius) >= 20) {
+            backgroundContainer.style.backgroundImage = 'url("./spring.png")';
+        }else if(parseInt(celsius) >= 5){
+            backgroundContainer.style.backgroundImage = 'url("./aut.png")';
+        }
+        else {
+            backgroundContainer.style.backgroundImage = 'url("./snow.jpeg")';
         }
         //part 2 to select elements in doc
         if (parseInt(celsius) >= 30.0999) {
