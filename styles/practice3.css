@@ -1,0 +1,40 @@
+.site-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+}
+#notifications{
+    font-size: 12px;
+}
+.login{
+    background-color: rgb(159, 159, 159);
+    margin: 10px;
+    height: 250px;
+    width: 60%;
+    padding: 10px ;
+}
+.login input{
+    display: block;
+    margin: 20px;
+    width: 76%;
+    padding: 10px;
+    font-size: 10px;
+    margin-left: 10%;
+
+}
+.login button{
+    display: block;
+    background-color: black;
+    color: rgb(235, 235, 235);
+    border: none;
+    padding: 10px;
+    width: 80%;
+    margin: 20px;
+    margin-left: 10%;
+}
+
+section {
+    margin-top: 4rem;
+    border-top: 1px solid black;
+}

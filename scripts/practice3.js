@@ -54,6 +54,6 @@ let food1=document.getElementById("favFood").value;
 
 document.getElementById("list").innerHTML+=`<li>${food1}</li>`;
 
-
 }
+
 

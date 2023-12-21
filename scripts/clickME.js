@@ -50,7 +50,8 @@ function ftc() {
 // event is used as good practice to let person know it is to stop event from happening premature
 function convertTemperature(event) {
     event.preventDefault();
-    let temperature = document.getElementById("temperature").value;
+    let temperatureS = document.getElementById("temperatureS").value;
+    let temperatureE = document.getElementById("temperatureE").value;
     let unit = document.getElementById("unit").value;
     // this is part 1 to select elements in doc 
     let th2Element=document.querySelector('.th2');
@@ -63,23 +64,49 @@ function convertTemperature(event) {
 
 
     if (unit === "celsius") {
-        let fahrenheit = (parseFloat(temperature) * 9/5) + 32;
-        document.getElementById("solution").innerText= `${fahrenheit} Fahrenheit.`;
+        let fahrenheitS = (parseInt(temperatureS) * 9/5) + 32;
+        let fahrenheitE = (parseInt(temperatureE) * 9/5) + 32;
+        let averageF = (fahrenheitS+fahrenheitE)/2;
+        document.getElementById("solution").innerText= `The temperature ranges from ${fahrenheitS.toFixed(0)} to ${fahrenheitE.toFixed(0)} fahrenheit. The average temperature is ${averageF.toFixed(0)} fahrenheit.`;
 
-        if (parseInt(fahrenheit) >= 60) {
-            backgroundContainer.style.backgroundImage = 'url("./spring.png")'; 
-        }else if(parseInt(fahrenheit) >= 15){
-            backgroundContainer.style.backgroundImage = 'url("./aut.png")';
+        function alpha(){
+            for(let table= fahrenheitS; table<=fahrenheitE+1; table++){
+                const tableF = ((table) - 32) * 5/9;
+                console.log(table.toFixed(1));
+                console.log(tableF.toFixed(1));
+                document.getElementById("avg").innerText += ` ${table.toFixed(0)}C° -> ${tableF.toFixed(1)}F°` 
+            };
+        }
+        function beta(){
+
+            for(let table= fahrenheitS; table>=fahrenheitE-1; table--){
+                const tableF = ((table) - 32) * 5/9;
+                console.log(table.toFixed(0));
+                console.log(tableF.toFixed(0));
+                document.getElementById("avg").innerText += ` ${table.toFixed(0)}C° ->  ${tableF.toFixed(1)}F°`;
+            }
+        }
+        if (fahrenheitS<fahrenheitE){
+        alpha();
+        }
+        else{
+        beta();
+        }
+
+        if (parseInt(averageF) >= 60) {
+            backgroundContainer.style.backgroundImage = 'url("./images/spring.png")'; 
+        }else if(parseInt(averageF) >= 15){
+            backgroundContainer.style.backgroundImage = 'url("./images/aut.png")';
         }
         else {
-            backgroundContainer.style.backgroundImage = 'url("./snow.jpeg")';
+            backgroundContainer.style.backgroundImage = 'url("./images/snow.jpeg")';
         }
-        if (parseInt(fahrenheit) >= 105) {
-            th6Element.style.backgroundImage = 'url("./fire.png")';
-            th5Element.style.backgroundImage = 'url("./fire.png")';
-            th4Element.style.backgroundImage = 'url("./fire.png")';
-            th3Element.style.backgroundImage = 'url("./fire.png")';
-            th2Element.style.backgroundImage = 'url("./fire.png")';
+        if (parseInt(averageF) >= 105) {
+            th6Element.style.backgroundImage = 'url("./images/fire.png")';
+            th5Element.style.backgroundImage = 'url("./images/fire.png")';
+            th4Element.style.backgroundImage = 'url("./images/fire.png")';
+            th3Element.style.backgroundImage = 'url("./images/fire.png")';
+            th2Element.style.backgroundImage = 'url("./images/fire.png")';
         } else {
             th6Element.style.backgroundImage = '';
             th5Element.style.backgroundImage = '';
@@ -87,45 +114,76 @@ function convertTemperature(event) {
             th3Element.style.backgroundImage = '';
             th2Element.style.backgroundImage = '';
         }
-        if (parseInt(fahrenheit) <= 70) {
+        if (parseInt(averageF) <= 70) {
             th5Element.style.backgroundColor = '';
         } else {
             th5Element.style.backgroundColor = 'red';
         }
-        if (parseInt(fahrenheit) <= 35) {
+        if (parseInt(averageF) <= 35) {
             th4Element.style.backgroundColor = '';
         } else {
             th4Element.style.backgroundColor = 'red';
         }
-        if (parseInt(fahrenheit) <= 0) {
+        if (parseInt(averageF) <= 0) {
             th3Element.style.backgroundColor = '';
         } else {
             th3Element.style.backgroundColor = 'red';
         }
-        if (parseInt(fahrenheit) >= 0) {
+        if (parseInt(averageF) >= 0) {
             th2Element.style.backgroundColor = 'red';
         } else {
-            th2Element.style.backgroundImage = 'url("./ice.png")';
+            th2Element.style.backgroundImage = 'url("./images/ice.png")';
         }
-    } else {
-        let celsius = (parseFloat(temperature) - 32) * 5/9;
-        document.getElementById("solution").innerText = `${celsius} Celsius.`;
+        
 
-        if (parseInt(celsius) >= 20) {
-            backgroundContainer.style.backgroundImage = 'url("./spring.png")';
-        }else if(parseInt(celsius) >= 5){
-            backgroundContainer.style.backgroundImage = 'url("./aut.png")';
+    } else {
+        let celsiusS = (parseFloat(temperatureS) - 32) * 5/9;
+        let celsiusE = (parseFloat(temperatureE) - 32) * 5/9;
+        let averageC = (celsiusS+celsiusE)/2;
+        document.getElementById("solution").innerText = `The temperature ranges from ${celsiusS.toFixed(0)} to ${celsiusE.toFixed(0)} celsius. The average temperature is ${averageC.toFixed(0)} celsius.`;
+
+        function alpha(){
+
+            for(let table= celsiusS; table<=celsiusE+1; table++){
+                const tableF = (table * 9/5) + 32;
+                console.log(table.toFixed(0));
+                console.log(tableF.toFixed(0));
+                document.getElementById("avg").innerText += ` ${table.toFixed(0)}C° -> ${tableF.toFixed(1)}F°`;
+                
+    
+            }
+        }
+        function beta(){
+
+            for(let table= celsiusS; table>=celsiusE-1; table--){
+                const tableF = (table * 9/5) + 32;
+                console.log(table.toFixed(0));
+                console.log(tableF.toFixed(0));
+                document.getElementById("avg").innerText += ` ${table.toFixed(0)}C° ->  ${tableF.toFixed(1)}F°`;
+            }
+        }
+        if (celsiusS<celsiusE){
+        alpha();
+        }
+        else{
+        beta();
+        }
+
+        if (parseInt(averageC) >= 20) {
+            backgroundContainer.style.backgroundImage = 'url("./images/spring.png")';
+        }else if(parseInt(averageC) >= 5){
+            backgroundContainer.style.backgroundImage = 'url("./images/aut.png")';
         }
         else {
-            backgroundContainer.style.backgroundImage = 'url("./snow.jpeg")';
+            backgroundContainer.style.backgroundImage = 'url("./images/snow.jpeg")';
         }
         //part 2 to select elements in doc
-        if (parseInt(celsius) >= 30.0999) {
-            th6Element.style.backgroundImage = 'url("./fire.png")';
-            th5Element.style.backgroundImage = 'url("./fire.png")';
-            th4Element.style.backgroundImage = 'url("./fire.png")';
-            th3Element.style.backgroundImage = 'url("./fire.png")';
-            th2Element.style.backgroundImage = 'url("./fire.png")';
+        if (parseInt(averageC) >= 30.0999) {
+            th6Element.style.backgroundImage = 'url("./images/fire.png")';
+            th5Element.style.backgroundImage = 'url("./images/fire.png")';
+            th4Element.style.backgroundImage = 'url("./images/fire.png")';
+            th3Element.style.backgroundImage = 'url("./images/fire.png")';
+            th2Element.style.backgroundImage = 'url("./images/fire.png")';
         } else {
             th6Element.style.backgroundImage = '';
             th5Element.style.backgroundImage = '';
@@ -133,25 +191,25 @@ function convertTemperature(event) {
             th3Element.style.backgroundImage = '';
             th2Element.style.backgroundImage = '';
         }
-        if (parseInt(celsius) <= 15.0999) {
+        if (parseInt(averageC) <= 15.0999) {
             th5Element.style.backgroundColor = '';
         } else {
             th5Element.style.backgroundColor = 'red';
         }
-        if (parseInt(celsius) <= 0) {
+        if (parseInt(averageC) <= 0) {
             th4Element.style.backgroundColor = '';
         } else {
             th4Element.style.backgroundColor = 'red';
         }
-        if (parseInt(celsius) <= -15) {
+        if (parseInt(averageC) <= -15) {
             th3Element.style.backgroundColor = '';
         } else {
             th3Element.style.backgroundColor = 'red';
         }
-        if (parseInt(celsius) >= -15) {
+        if (parseInt(averageC) >= -15) {
             th2Element.style.backgroundColor = 'red';
         } else {
-            th2Element.style.backgroundImage = 'url("./ice.png")';
+            th2Element.style.backgroundImage = 'url("./images/ice.png")';
         }
     }
 }
